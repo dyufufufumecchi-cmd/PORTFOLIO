@@ -39,14 +39,20 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
       - name: Build
-        run: npm run build
-      - name: Check build output
+        run: VITE_CJS_IGNORE_WARNING=true npm run build -- --logLevel info
+      - name: Debug Output
         run: |
+          echo "Current directory: $(pwd)"
+          ls -la
           if [ -d "dist" ]; then
-            echo "Build successful, dist directory exists."
-            ls -R dist
+            echo "dist directory found."
+            ls -la dist
+          elif [ -d "build" ]; then
+            echo "Found build directory instead of dist."
+            ls -la build
           else
-            echo "Build failed, dist directory not found!"
+            echo "Neither dist nor build directory found."
+            find . -maxdepth 2 -not -path '*/.*'
             exit 1
           fi
       - name: Setup Pages
