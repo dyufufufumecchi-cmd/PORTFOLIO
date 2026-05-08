@@ -6,7 +6,11 @@ import {defineConfig, loadEnv} from 'vite';
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
-    plugins: [react(), tailwindcss()],
+    build: {          // <--- 贴在这里
+      outDir: 'dist',
+      emptyOutDir: true,
+    },
+    插件: [ react(), tailwindcss() ],
     base: '/PORTFOLIO/',
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
