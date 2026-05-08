@@ -284,7 +284,10 @@ export default function App() {
               </motion.p>
               
               <div className="flex flex-wrap gap-4 items-center">
-                <button className="glass px-8 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all font-semibold">
+                <button 
+                  onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="glass px-8 py-3 rounded-full text-[10px] uppercase tracking-widest hover:bg-white/10 transition-all font-semibold"
+                >
                   View Experience
                 </button>
                 <div className="flex items-center gap-3 ml-4">
@@ -399,7 +402,7 @@ export default function App() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-24 md:py-40 px-6 md:px-8 bg-noise border-t border-white/10">
+      <section id="experience" className="py-24 md:py-40 px-6 md:px-8 bg-noise border-t border-white/10">
         <div className="max-w-5xl mx-auto">
           <span className="text-[10px] uppercase tracking-[0.3em] opacity-40 mb-20 block text-center italic">03 / The Narrative</span>
 
