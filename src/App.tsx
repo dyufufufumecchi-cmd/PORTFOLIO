@@ -201,6 +201,47 @@ const SKILLS = [
   { name: "Figma Make", icon: Code2 }
 ];
 
+const OptimizedImage = ({ src, alt, className, ...props }: any) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div className={`relative overflow-hidden bg-white/5 ${className}`}>
+      <AnimatePresence>
+        {!isLoaded && !error && (
+          <motion.div 
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="w-8 h-8 border-2 border-gold/20 border-t-gold rounded-full animate-spin" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      {error ? (
+        <div className="absolute inset-0 flex items-center justify-center text-[10px] uppercase tracking-widest opacity-30">
+          Failed to load
+        </div>
+      ) : (
+        <motion.img
+          src={src}
+          alt={alt}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setError(true)}
+          referrerPolicy="no-referrer"
+          loading="lazy"
+          className="w-full h-auto block"
+          {...props}
+        />
+      )}
+    </div>
+  );
+};
+
 export default function App() {
   const scrollRef = useRef(null);
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -360,12 +401,10 @@ export default function App() {
                 className={`group glass p-8 md:p-12 rounded-3xl flex flex-col lg:flex-row gap-12 items-center transition-all ${project.gallery ? 'cursor-pointer hover:border-white/20 hover:bg-white/[0.07]' : 'cursor-default'}`}
               >
                 <div className="lg:w-2/5 w-full relative overflow-hidden rounded-2xl">
-                  <motion.img 
-                    whileHover={{ scale: 1.05 }}
+                  <OptimizedImage 
                     src={project.image} 
                     alt={project.name}
                     className="w-full aspect-video object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 
@@ -534,23 +573,23 @@ export default function App() {
                           transition={{ delay: i * 0.1 }}
                         >
                           {isVideo ? (
-                            <video 
-                              src={item} 
-                              controls 
-                              autoPlay 
-                              muted 
-                              loop 
-                              playsInline
-                              preload="auto"
-                              className="w-full h-auto"
-                            />
+                            <div className="relative bg-white/5 overflow-hidden">
+                              <video 
+                                src={item} 
+                                controls 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline
+                                preload="auto"
+                                className="w-full h-auto"
+                              />
+                            </div>
                           ) : (
-                            <img 
+                            <OptimizedImage 
                               src={item} 
                               alt={`${selectedProject.name} item ${i + 1}`} 
-                              className="w-full h-auto"
-                              referrerPolicy="no-referrer"
-                              loading="lazy"
+                              className="w-full"
                             />
                           )}
                         </motion.div>
