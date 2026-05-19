@@ -34,19 +34,19 @@ const PROJECTS = [
     tags: ["UI/UX", "AIGC", "Harmony OS", "Cross-device"],
     image: "/covers/cover_01.webp",
     gallery: [
-      "/projects/cctv/央视_01.webp",
-      "/projects/cctv/央视_02.webp",
-      "/projects/cctv/央视_03.webp",
-      "/projects/cctv/央视_04.webp",
-      "/projects/cctv/央视_05.webp",
-      "/projects/cctv/央视_06.webp",
-      "/projects/cctv/央视_07.webp",
-      "/projects/cctv/央视_08.webp",
-      "/projects/cctv/央视_09.webp",
-      "/projects/cctv/央视_10.webp",
-      "/projects/cctv/央视_11.webp",
-      "/projects/cctv/央视_12.webp",
-      "/projects/cctv/央视_13.webp"
+      "/projects/cctv/cctv_01.webp",
+      "/projects/cctv/cctv_02.webp",
+      "/projects/cctv/cctv_03.webp",
+      "/projects/cctv/cctv_04.webp",
+      "/projects/cctv/cctv_05.webp",
+      "/projects/cctv/cctv_06.webp",
+      "/projects/cctv/cctv_07.webp",
+      "/projects/cctv/cctv_08.webp",
+      "/projects/cctv/cctv_09.webp",
+      "/projects/cctv/cctv_10.webp",
+      "/projects/cctv/cctv_11.webp",
+      "/projects/cctv/cctv_12.webp",
+      "/projects/cctv/cctv_13.webp"
     ],
   },
   {
@@ -94,23 +94,23 @@ const PROJECTS = [
     tags: ["B-Side", "Hospitality", "UI/UX"],
     image: "/covers/cover_03.webp",
     gallery: [
-      "/projects/hotel/和酒店_01.webp",
-      "/projects/hotel/和酒店_02.webp",
-      "/projects/hotel/和酒店_03.webp",
-      "/projects/hotel/和酒店_04.webp",
-      "/projects/hotel/和酒店_05.webp",
-      "/projects/hotel/和酒店_06.webp",
-      "/projects/hotel/和酒店_07.webp",
-      "/projects/hotel/和酒店_08.webp",
-      "/projects/hotel/和酒店_09.webp",
-      "/projects/hotel/和酒店_10.webp",
-      "/projects/hotel/和酒店_11.webp",
-      "/projects/hotel/和酒店_12.webp",
-      "/projects/hotel/和酒店_13.webp",
-      "/projects/hotel/和酒店_14.webp",
-      "/projects/hotel/和酒店_15.webp",
-      "/projects/hotel/和酒店_16.webp",
-      "/projects/hotel/和酒店_17.webp"
+      "/projects/hotel/hotel_01.webp",
+      "/projects/hotel/hotel_02.webp",
+      "/projects/hotel/hotel_03.webp",
+      "/projects/hotel/hotel_04.webp",
+      "/projects/hotel/hotel_05.webp",
+      "/projects/hotel/hotel_06.webp",
+      "/projects/hotel/hotel_07.webp",
+      "/projects/hotel/hotel_08.webp",
+      "/projects/hotel/hotel_09.webp",
+      "/projects/hotel/hotel_10.webp",
+      "/projects/hotel/hotel_11.webp",
+      "/projects/hotel/hotel_12.webp",
+      "/projects/hotel/hotel_13.webp",
+      "/projects/hotel/hotel_14.webp",
+      "/projects/hotel/hotel_15.webp",
+      "/projects/hotel/hotel_16.webp",
+      "/projects/hotel/hotel_17.webp"
     ],
   },
   {
@@ -136,10 +136,10 @@ const PROJECTS = [
     tags: ["B-Side", "SaaS", "Design System", "Admin"],
     image: "/covers/cover_05.webp",
     gallery: [
-      "/projects/bside/B端后台_01.webp",
-      "/projects/bside/B端后台_02.webp",
-      "/projects/bside/B端后台_03.webp",
-      "/projects/bside/B端后台_04.webp"
+      "/projects/bside/bside_01.webp",
+      "/projects/bside/bside_02.webp",
+      "/projects/bside/bside_03.webp",
+      "/projects/bside/bside_04.webp"
     ],
   },
   {
@@ -202,16 +202,22 @@ const SKILLS = [
 ];
 
 const resolvePath = (path: string) => {
-  if (path.startsWith('http')) return path;
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  const p = path.startsWith('/') ? path : `/${path}`;
-  return `${base}${p}`;
+  if (!path || path.startsWith('http')) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
 };
 
 const OptimizedImage = ({ src, alt, className, ...props }: any) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
   const resolvedSrc = resolvePath(src);
+
+  useEffect(() => {
+    // Reset state when src changes
+    setIsLoaded(false);
+    setError(false);
+  }, [src]);
 
   return (
     <div className={`relative overflow-hidden bg-white/5 ${className}`}>
