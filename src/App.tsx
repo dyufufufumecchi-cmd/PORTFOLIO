@@ -59,29 +59,29 @@ const PROJECTS = [
     tags: ["Product Strategy", "UI/UX", "Mini Program"],
     image: "/covers/cover_02.webp",
     gallery: [
-      "/projects/sim/SIM_01.webp",
-      "/projects/sim/SIM_02.webp",
-      "/projects/sim/SIM_03.webp",
-      "/projects/sim/SIM_04.webp",
-      "/projects/sim/SIM_05.webp",
-      "/projects/sim/SIM_06.webp",
-      "/projects/sim/SIM_07.webp",
-      "/projects/sim/SIM_08.webp",
-      "/projects/sim/SIM_09.gif",
-      "/projects/sim/SIM_10.webp",
-      "/projects/sim/SIM_11.webp",
-      "/projects/sim/SIM_12.webp",
-      "/projects/sim/SIM_13.webp",
-      "/projects/sim/SIM_14.webp",
-      "/projects/sim/SIM_15.webp",
-      "/projects/sim/SIM_16.webp",
-      "/projects/sim/SIM_17.webp",
-      "/projects/sim/SIM_18.webp",
-      "/projects/sim/SIM_19.webp",
-      "/projects/sim/SIM_20.webp",
-      "/projects/sim/SIM_21.webp",
-      "/projects/sim/SIM_22.webp",
-      "/projects/sim/SIM_23.webp"
+      "/projects/sim/sim_01.webp",
+      "/projects/sim/sim_02.webp",
+      "/projects/sim/sim_03.webp",
+      "/projects/sim/sim_04.webp",
+      "/projects/sim/sim_05.webp",
+      "/projects/sim/sim_06.webp",
+      "/projects/sim/sim_07.webp",
+      "/projects/sim/sim_08.webp",
+      "/projects/sim/sim_09.gif",
+      "/projects/sim/sim_10.webp",
+      "/projects/sim/sim_11.webp",
+      "/projects/sim/sim_12.webp",
+      "/projects/sim/sim_13.webp",
+      "/projects/sim/sim_14.webp",
+      "/projects/sim/sim_15.webp",
+      "/projects/sim/sim_16.webp",
+      "/projects/sim/sim_17.webp",
+      "/projects/sim/sim_18.webp",
+      "/projects/sim/sim_19.webp",
+      "/projects/sim/sim_20.webp",
+      "/projects/sim/sim_21.webp",
+      "/projects/sim/sim_22.webp",
+      "/projects/sim/sim_23.webp"
     ],
   },
   {
@@ -123,7 +123,7 @@ const PROJECTS = [
     tags: ["Web Design", "UI", "AIGC", "Responsive"],
     image: "/covers/cover_04.webp",
     gallery: [
-      "/projects/web/cctv_web.webp"
+      "/projects/web/web_01.webp"
     ],
   },
   {
@@ -152,16 +152,16 @@ const PROJECTS = [
     tags: ["Midjourney", "Stable Diffusion", "AI Workflow", "LoRA"],
     image: "/covers/cover_06.webp",
     gallery: [
-      "/projects/aigc/AIGC_01.webp",
-      "/projects/aigc/AIGC_02.webp",
-      "/projects/aigc/AIGC_03.gif",
-      "/projects/aigc/AIGC_04.gif",
-      "/projects/aigc/AIGC_05.webp",
-      "/projects/aigc/AIGC_06.webp",
-      "/projects/aigc/AIGC_07.webp",
-      "/projects/aigc/AIGC_08.webp",
-      "/projects/aigc/AIGC_09.webp",
-      "/projects/aigc/AIGC_10.webp"
+      "/projects/aigc/aigc_01.webp",
+      "/projects/aigc/aigc_02.webp",
+      "/projects/aigc/aigc_03.gif",
+      "/projects/aigc/aigc_04.gif",
+      "/projects/aigc/aigc_05.webp",
+      "/projects/aigc/aigc_06.webp",
+      "/projects/aigc/aigc_07.webp",
+      "/projects/aigc/aigc_08.webp",
+      "/projects/aigc/aigc_09.webp",
+      "/projects/aigc/aigc_10.webp"
     ],
   }
 ];
@@ -201,29 +201,23 @@ const SKILLS = [
   { name: "Figma Make", icon: Code2 }
 ];
 
-const resolvePath = (path: string) => {
-  if (!path || path.startsWith('http')) return path;
-  const base = import.meta.env.BASE_URL || '/';
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
-};
-
 const OptimizedImage = ({ src, alt, className, ...props }: any) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const resolvedSrc = resolvePath(src);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // Reset state when src changes
-    setIsLoaded(false);
-    setError(false);
-  }, [src]);
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   return (
     <div className={`relative overflow-hidden bg-white/5 ${className}`}>
       <AnimatePresence>
         {!isLoaded && !error && (
           <motion.div 
+            key="loader"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="absolute inset-0 flex items-center justify-center"
@@ -239,7 +233,8 @@ const OptimizedImage = ({ src, alt, className, ...props }: any) => {
         </div>
       ) : (
         <motion.img
-          src={resolvedSrc}
+          ref={imgRef}
+          src={src}
           alt={alt}
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
@@ -588,7 +583,7 @@ export default function App() {
                           {isVideo ? (
                             <div className="relative bg-white/5 overflow-hidden">
                               <video 
-                                src={resolvePath(item)} 
+                                src={item} 
                                 controls 
                                 autoPlay 
                                 muted 
