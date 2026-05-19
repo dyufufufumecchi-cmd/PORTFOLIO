@@ -32,7 +32,7 @@ const PROJECTS = [
     description: "负责信息流、直播、UGC模块的UI/UX设计，制定组件化规范。主导Harmony OS跨设备设计与AIGC内容生成落地。",
     achievements: "下载量破2.1亿，矩阵用户超7.9亿；AI功能显著提升内容生产效率与停留时长。",
     tags: ["UI/UX", "AIGC", "Harmony OS", "Cross-device"],
-    image: "/projects/cctv/央视_01.webp",
+    image: "/covers/cover_01.webp",
     gallery: [
       "/projects/cctv/央视_01.webp",
       "/projects/cctv/央视_02.webp",
@@ -57,7 +57,7 @@ const PROJECTS = [
     description: "参与前期产品定义与市场调研，负责各子产品线整体设计，包括小程序、网页、后台等。",
     achievements: "中国移动超级SIM卡持卡用户数已突破1亿，重庆试点日活超10万+。",
     tags: ["Product Strategy", "UI/UX", "Mini Program"],
-    image: "/projects/sim/SIM_01.webp",
+    image: "/covers/cover_02.webp",
     gallery: [
       "/projects/sim/SIM_01.webp",
       "/projects/sim/SIM_02.webp",
@@ -92,7 +92,7 @@ const PROJECTS = [
     description: "负责管理端（酒店管理平台+小程序）+住宿端需求沟通、UI和交互设计。",
     achievements: "帮助酒店降低人力成本40%，目前已覆盖2000+门店。",
     tags: ["B-Side", "Hospitality", "UI/UX"],
-    image: "/projects/hotel/和酒店_01.webp",
+    image: "/covers/cover_03.webp",
     gallery: [
       "/projects/hotel/和酒店_01.webp",
       "/projects/hotel/和酒店_02.webp",
@@ -121,7 +121,7 @@ const PROJECTS = [
     description: "专注于企业官网及品牌站的全案视觉设计，通过严谨的栅格系统与 AIGC 辅助概念产出，提升品牌线上表现力与响应式适配效果。",
     achievements: "成功主导多项行业标杆企业的数字化升级与官网重构，大幅提升品牌视觉一致性。",
     tags: ["Web Design", "UI", "AIGC", "Responsive"],
-    image: "/projects/web/cctv_web.webp",
+    image: "/covers/cover_04.webp",
     gallery: [
       "/projects/web/cctv_web.webp"
     ],
@@ -134,7 +134,7 @@ const PROJECTS = [
     description: "专注于复杂业务系统与中后台管理平台的体验设计。通过构建标准化组件库与业务逻辑梳理，提升系统可用性与操作效率，确保复杂数据的清晰呈现。",
     achievements: "主导并落地多项大型 B 端管理软件设计，通过系统性设计规范将产研沟通成本降低 30%，显著提升产品版本迭代速度。",
     tags: ["B-Side", "SaaS", "Design System", "Admin"],
-    image: "/projects/bside/B端后台_01.webp",
+    image: "/covers/cover_05.webp",
     gallery: [
       "/projects/bside/B端后台_01.webp",
       "/projects/bside/B端后台_02.webp",
@@ -150,18 +150,18 @@ const PROJECTS = [
     description: "深度探索 AIGC 技术在商业设计中的极致应用。利用 Midjourney、Stable Diffusion 等工具重构设计工作流，专注于 LoRA 模型训练、提示词工程（Prompt Engineering）以及 AI 生成内容 in 品牌视觉与 UI 灵感中的落地。",
     achievements: "通过 AI 工作流重构设计探索链路，在保证高质量视觉产出的同时显著缩短了创意原型周期，有效支持了品牌视觉方案的快速推演与项目高度落地。",
     tags: ["Midjourney", "Stable Diffusion", "AI Workflow", "LoRA"],
-    image: "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/c190f385922a8b6418f254c47742f7c6fb70ce9f/AIGC%E8%BF%90%E8%90%A5.png",
+    image: "/covers/cover_06.webp",
     gallery: [
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/52368037ad6c4dba62bc2928c7a4f23478fd271f/9qoc4-f6b6i%20(1).gif",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/7153410e675b3d6ede74e71dc248a9d2b3f1a170/IP%E8%AE%BE%E8%AE%A1.png",
-      "https://github.com/dyufufufumecchi-cmd/imagine/raw/c190f385922a8b6418f254c47742f7c6fb70ce9f/%E5%90%B1%E8%92%B2%E5%85%AC%E8%8B%B1.mp4",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/52368037ad6c4dba62bc2928c7a4f23478fd271f/%E8%BF%87%E6%B2%B3.mp4",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/d7cf2f06f39768aaa80b215c651300a88f3fd238/IP%E5%90%AF%E5%8A%A8%E9%A1%B5%E8%AE%BE%E8%AE%A1_%E5%89%AF%E6%9C%AC.png",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/d7cf2f06f39768aaa80b215c651300a88f3fd238/%E8%BF%90%E8%90%A5%E6%B4%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1-%20H5%E8%AE%BE%E8%AE%A1_%E5%89%AF%E6%9C%AC.png",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/d7cf2f06f39768aaa80b215c651300a88f3fd238/%E8%BF%90%E8%90%A5%E6%B4%BB%E5%8A%A8%E8%AE%BE%E8%AE%A1-%20banner%E8%AE%BE%E8%AE%A1.png",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/7153410e675b3d6ede74e71dc248a9d2b3f1a170/%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1.png",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/7153410e675b3d6ede74e71dc248a9d2b3f1a170/LOGO%E8%AE%BE%E8%AE%A1.png",
-      "https://raw.githubusercontent.com/dyufufufumecchi-cmd/imagine/7153410e675b3d6ede74e71dc248a9d2b3f1a170/%E8%89%B2%E5%BD%A9%E7%BB%83%E4%B9%A0.png"
+      "/projects/aigc/AIGC_01.webp",
+      "/projects/aigc/AIGC_02.webp",
+      "/projects/aigc/AIGC_03.gif",
+      "/projects/aigc/AIGC_04.gif",
+      "/projects/aigc/AIGC_05.webp",
+      "/projects/aigc/AIGC_06.webp",
+      "/projects/aigc/AIGC_07.webp",
+      "/projects/aigc/AIGC_08.webp",
+      "/projects/aigc/AIGC_09.webp",
+      "/projects/aigc/AIGC_10.webp"
     ],
   }
 ];
